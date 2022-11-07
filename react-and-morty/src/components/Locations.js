@@ -9,7 +9,7 @@ function Locations({ id, name, type, dimension, residents }) {
     // }
 
     return <>
-        <div className="locations" key={id}>
+        <div className="cards" key={id}>
         <img
                 height="300"
                 src={locations}

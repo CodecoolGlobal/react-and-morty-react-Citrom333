@@ -9,8 +9,8 @@
     background-repeat: no-repeat;
     margin-left: auto;
     margin-right: auto;
-    height: 120vh;
-  width: 100vw;
+    min-height: 120vh;
+  max-height: fit-content;
 
 }
 
