@@ -6,6 +6,7 @@ import Characters from "./components/Characters";
 import Locations from "./components/Locations";
 import { useState } from "react";
 
+
 function App() {
   const characters = useCharacters(1);
   const locations = useLocations(1);
@@ -13,18 +14,18 @@ function App() {
   const CharButtonHandleClick=()=>{
     console.log("click");
     setShow({ showCharacters: true, showLocations: false, showGreetings:false});
-    setShrink(shrink=true);
+    setShrink(true);
   }
 
   const LocButtonHandleClick=()=>{
     console.log("click");
     setShow({ showCharacters: false, showLocations: true, showGreetings:false});
-    setShrink(shrink=true);
+    setShrink(true);
   }
   const LogoHandleClick=()=>{
     console.log("LOGO")
     setShow({ showCharacters: false, showLocations: false, showGreetings:true});
-    setShrink(shrink=false);
+    setShrink(false);
   }
 
   const [shrink, setShrink]=useState(false);
@@ -43,9 +44,11 @@ function App() {
 const props={
   charButtonProps:CharButtonHandleClick,
   locButtonProps:LocButtonHandleClick,
-  logoProps:LogoHandleClick
+  logoProps:LogoHandleClick,
+  logoShrink:shrink
 }
-  return <><div><Frontpage props={props}/>
+  return <div className="fullPage"><div ><Frontpage props={props}/>
+  <div className="cardContainer">
     {showCharacters ?
       characters.results === undefined ? console.log("asd") : characters.results.map((user) => <Characters {...user} />)
       : ""}
@@ -53,10 +56,11 @@ const props={
       locations.results === undefined ? console.log("asd") : locations.results.map((user) => <Locations {...user} />)
       : ""}
   </div>
+  </div>
    <div>
    {showGreetings?
-   <p>On this website, you can get more information about the fantastic multiverse of Rick and Morty</p>:""}
-</div></>
+   <p id="greetings">On this website, you can get more information about the fantastic multiverse of Rick and Morty</p>:""}
+</div></div>
 }
 
 export default App;

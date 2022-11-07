@@ -9,14 +9,14 @@ function Characters({ id, name, status, species, type, gender, image }) {
     // }
 
     return <>
-        <div className="characters">
+        <div className="cards" key={id}>
             <img
                 height="300"
                 src={image}
                 alt={name}
             />
             <h2>
-                <span>Id: {id}</span><br />
+                {/* <span>Id: {id}</span><br /> */}
                 <span>Name: {name}</span><br />
                 <span>Species: {species}</span><br />
             </h2>

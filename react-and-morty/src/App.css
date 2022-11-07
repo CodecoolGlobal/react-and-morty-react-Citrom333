@@ -1,0 +1,56 @@
+.fullPage {
+    background-image: url("./components/rick and morty desktop wallpaper.jpg");
+    margin-top: -80px;
+    background-color: #ffffff;
+    background-size: 2100px 1080px;
+    align-content: center;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-left: auto;
+    margin-right: auto;
+    height: 120vh;
+  width: 100vw;
+
+}
+
+
+.frontPage {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+#Logo {
+    
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 40%;
+        transition: 1s;
+}
+
+#greetings {
+    text-align: center;
+}
+
+#shrink {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 20%;
+    transition: 1s;
+}
+.cardContainer{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    padding: 20px;
+}
+.cards{
+    text-align: center;
+   background-color: #ffffff;
+    padding: 20px;
+    border: 3px solid rgba(0, 0, 0, 0.8);
+    border-radius: 6%;
+}
+
