@@ -10,11 +10,7 @@ function Locations({ id, name, type, dimension, residents }) {
 
     return <>
         <div className="locations">
-            <img
-                height="300"
-                src={image}
-                alt={name}
-            />
+       
             <h2>
                 <span>Id: {id}</span><br />
                 <span>Name: {name}</span><br />

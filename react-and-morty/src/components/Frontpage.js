@@ -2,13 +2,12 @@ import React from "react";
 import logo from "./logo/logo.png";
 
 function Frontpage(props) {
+    console.log(props)
     return <div>
-        {/* <img src={logo} alt="rick and morty logo" /> */}
-        <button onClick={props.props}>Characters</button>
-        <button onClick={props.props}>Locations</button>
-        <div>
-            <p>On this website, you can get more information about the fantastic multiverse of Rick and Morty</p>
-        </div>
+        <img src={logo} height="300" alt="rick and morty logo" onClick={props.props.logoProps}/> 
+        <button onClick={props.props.charButtonProps}>Characters</button>
+        <button onClick={props.props.locButtonProps}>Locations</button>
+       
     </div>
 }
 
