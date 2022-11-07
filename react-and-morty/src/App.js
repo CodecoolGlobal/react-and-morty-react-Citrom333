@@ -5,11 +5,14 @@ import Frontpage from "./components/Frontpage";
 import Characters from "./components/Characters";
 import Locations from "./components/Locations";
 import { useState } from "react";
+import Pagination from "./components/Pagination";
 
 
 function App() {
-  const characters = useCharacters(1);
-  const locations = useLocations(1);
+  const [currentPageChars, setCurrentPageChars]=useState(1);
+  const [currentPageLocs, setCurrentPageLocs]=useState(1);
+  const characters = useCharacters(currentPageChars);
+  const locations = useLocations(currentPageLocs);
 
   const CharButtonHandleClick=()=>{
     console.log("click");
@@ -48,6 +51,16 @@ const props={
   logoShrink:shrink
 }
   return <div className="fullPage"><div ><Frontpage props={props}/>
+  {showCharacters? <Pagination
+      totalPages={42}
+      currentPage={currentPageChars}
+      onPageChange={(page)=>setCurrentPageChars(page)}
+      />:""}
+  {showLocations? <Pagination
+      totalPages={7}
+      currentPage={currentPageLocs}
+      onPageChange={(page)=>setCurrentPageLocs(page)}
+      />:""}
   <div className="cardContainer">
     {showCharacters ?
       characters.results === undefined ? console.log("asd") : characters.results.map((user) => <Characters {...user} />)
