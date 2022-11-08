@@ -12,6 +12,7 @@ import { mainUrls } from "./dataRoutes.js";
 export const useCharacters = (pageNum = 1) => {
   const [characters, setUrl] = useFetch(mainUrls.characters + pageNum);
   useEffect(() => {
+    
     setUrl(mainUrls.characters + pageNum);
   }, [pageNum]);
   return characters === undefined ? "Loading..." : characters;

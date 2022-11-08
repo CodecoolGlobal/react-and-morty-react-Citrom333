@@ -1,9 +1,19 @@
 import React, { useState } from 'react';
 import locations from "./Img/locations.png"
-function Locations({ id, name, type, dimension, residents }) {
+import { useEffect } from 'react';
+
+function Locations({ id, name, type, dimension, residents, reset }) {
 
     const [side, setSide] = useState("front");
-
+    useEffect(() => {
+        console.log("useEffect")
+        if (reset||!reset) {
+            setSide("front")
+        }
+      }, [reset]);
+    
+  
+  
     const flipImg = () => {
         side === "front" ? setSide("back") : setSide("front")
     }

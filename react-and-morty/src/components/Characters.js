@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect} from 'react';
 
 
-function Characters({ id, name, status, species, type, gender, image }) {
+function Characters({ id, name, status, species, type, gender, image, reset}) {
     const [side, setSide] = useState("front");
-
+    useEffect(() => {
+        console.log("useEffect")
+        if (reset||!reset) {
+            setSide("front")
+        }
+      }, [reset]);
     const flipImg = () => {
         side === "front" ? setSide("back") : setSide("front")
     }
-
 
     return (side === "front") ?
         <div onClick={flipImg} className="cards front" key={id}>
