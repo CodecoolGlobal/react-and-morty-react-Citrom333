@@ -14,7 +14,6 @@
 
 }
 
-
 .frontPage {
     display: flex;
     justify-content: center;
@@ -27,7 +26,6 @@
 }
 
 #Logo {
-
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -80,7 +78,7 @@
     height: 400px;
 
 
-    transition: transform 0.3s;
+    transition: transform 0.8s;
     transform-style: preserve-3d;
 }
 
@@ -115,6 +113,7 @@
 
 .cards:active {
     transform: rotateY(180deg);
+    transition: 0.5s;
 }
 
 .front {

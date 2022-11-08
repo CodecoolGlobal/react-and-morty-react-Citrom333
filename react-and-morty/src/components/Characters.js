@@ -10,7 +10,6 @@ function Characters({ id, name, status, species, type, gender, image }) {
 
 
     return (side === "front") ?
-
         <div onClick={flipImg} className="cards front" key={id}>
             <img
                 height="300"
