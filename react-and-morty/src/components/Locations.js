@@ -1,34 +1,37 @@
 import React, { useState } from 'react';
-import locations from "./locations.png"
+import locations from "./Img/locations.png"
 function Locations({ id, name, type, dimension, residents }) {
 
-    // const [showMore, setShowMore] = useState(false);
+    const [side, setSide] = useState("front");
 
-    // function handleMoreClick() {
-    //     setShowMore(!showMore);
-    // }
+    const flipImg = () => {
+        side === "front" ? setSide("back") : setSide("front")
+    }
 
-    return <>
-        <div className="cards" key={id}>
-        <img
+
+    return (side === "front") ?
+
+        <div onClick={flipImg} className="cards front" key={id}>
+            <img
                 height="300"
                 src={locations}
                 alt={name}
             />
             <h2>
-                {/* <span>Id: {id}</span><br /> */}
                 <span>Name: {name}</span><br />
                 <span>Type: {type}</span><br />
             </h2>
         </div>
-        {/* <div className="characters">
-            <button className="btn" onClick={handleMoreClick}>
-                {showMore ? 'Hide' : 'Show'} details
-            </button>
-            {showMore && <span>{description}</span>}
-        </div> */}
-
-    </>
+        :
+        <div onClick={flipImg} className="cards back" key={id}>
+            <h2>
+                <span>Name: {name}</span><br />
+                <span>Dimension: {dimension}</span><br />
+                <span>Type: {type}</span><br />
+                {/* <span>Residents: {residents}</span><br /> */}
+            </h2>
+        </div>
 }
+
 
 export default Locations;
