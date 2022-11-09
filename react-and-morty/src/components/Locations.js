@@ -5,12 +5,12 @@ import { useEffect } from 'react';
 function Locations({ id, name, type, dimension, residents, reset }) {
 
     const [side, setSide] = useState("front");
-    useEffect(() => {
-        console.log("useEffect")
-        if (reset||!reset) {
-            setSide("front")
-        }
-      }, [reset]);
+    // useEffect(() => {
+    //     console.log("useEffect")
+    //     if (reset||!reset) {
+    //         setSide("front")
+    //     }
+    //   }, [reset]);
     
   
   
