@@ -15,13 +15,25 @@ function App() {
   const [currentPageLocs, setCurrentPageLocs] = useState(1);
   const characters = useCharacters(currentPageChars);
   const locations = useLocations(currentPageLocs);
-  const [counterOfBottom, setCounterOfBottom] = useState(0)
+  const [counterOfBottom, setCounterOfBottom] = useState(1)
 
   const inTheDeep=()=>{
-    setCounterOfBottom(()=>counterOfBottom+1)
-    console.log("pageBottom")
-    console.log(counterOfBottom)
-    setCurrentPageChars(counterOfBottom);
+    if(showCharacters && counterOfBottom<=42){
+      setCounterOfBottom(()=>counterOfBottom+1)
+      console.log("pageBottom")
+      console.log(counterOfBottom)
+     
+    setCurrentPageChars(counterOfBottom)
+      }
+    else if (showLocations && counterOfBottom <=7) {  
+      setCounterOfBottom(()=>counterOfBottom+1)
+      console.log("pageBottom")
+      console.log(counterOfBottom)
+      setCurrentPageLocs(counterOfBottom)
+    }
+    else {
+      return;
+    };
   }
   const handleScroll = (e) => {
 
@@ -31,13 +43,12 @@ function App() {
     );
     if (currentHeight + 1 >= scrollHeight) {
             inTheDeep();
-
     }
   };
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     console.log("useEffect scroll")
-  }, []);
+  }, );
 
   const [moreChars, addMoreChars] = useState([])
 
@@ -46,9 +57,17 @@ function App() {
       addMoreChars(current => [...current, ...characters.results])
       // moreChars.push(...characters.results)
     }
-    console.log(moreChars)
+    // console.log(moreChars)
   }, [characters.results])
 
+  const [moreLocs, addMoreLocs] = useState([])
+  useEffect(() => {
+    if (locations.results !== undefined) {
+      addMoreLocs(current => [...current, ...locations.results])
+      // moreChars.push(...characters.results)
+    }
+    // console.log(moreChars)
+  }, [locations.results])
 
   const CharButtonHandleClick = () => {
     console.log("click");
@@ -112,10 +131,12 @@ function App() {
     /> : ""}
     <div className="cardContainer" >
       {showCharacters ?
-        characters.results === undefined ? console.log("asd") : characters.results.map((user) => <Characters {...user} key={user.id} />)
+        // characters.results === undefined ? console.log("asd") : characters.results.map((user) => <Characters {...user} key={user.id} />)
+        moreChars.map((user) => <Characters {...user} key={user.id} />)
         : ""}
       {showLocations ?
-        locations.results === undefined ? console.log("asd") : locations.results.map((user) => <Locations {...user} key={user.id} />)
+        // locations.results === undefined ? console.log("asd") : locations.results.map((user) => <Locations {...user} key={user.id} />)
+        moreLocs.map((user) => <Locations {...user} key={user.id} />)
         : ""}
 
     </div>
