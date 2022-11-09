@@ -16,6 +16,7 @@ function Characters({ id, name, status, species, type, gender, image, reset}) {
     return (side === "front") ?
         <div onClick={flipImg} className="cards front" key={id}>
             <img
+                id="cardImg"
                 height="300"
                 src={image}
                 alt={name}
@@ -28,7 +29,7 @@ function Characters({ id, name, status, species, type, gender, image, reset}) {
         :
         <div onClick={flipImg} className="cards back" key={id}>
             <h2>
-                <span>Name: {name}</span><br />
+                <br/><span>Name: {name}</span><br />
                 <span>Species: {species}</span><br />
                 <span>Type: {type}</span><br />
                 <span>Gender: {gender}</span><br />

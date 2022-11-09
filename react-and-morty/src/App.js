@@ -15,28 +15,28 @@ function App() {
   const [currentPageLocs, setCurrentPageLocs]=useState(1);
   const characters = useCharacters(currentPageChars);
   const locations = useLocations(currentPageLocs);
-const moreCharacters=[];
-const [scrolledCharacter, setScrolledChar]=useState([])
-characters.results === undefined ? console.log("loading") : moreCharacters.push(characters.results);
-  const handleScroll =async (e) => {
+// const moreCharacters=[];
+// const [scrolledCharacter, setScrolledChar]=useState([])
+// characters.results === undefined ? console.log("loading") : moreCharacters.push(characters.results);
+//   const handleScroll =async (e) => {
   
    
-    const scrollHeight = e.target.documentElement.scrollHeight;
-    const currentHeight = Math.ceil(
-      e.target.documentElement.scrollTop + window.innerHeight
-    );
-    if (currentHeight + 1 >= scrollHeight) {
-      await characters.results === undefined ? console.log("asd") : moreCharacters.push(characters.results);
-      setCurrentPageChars(currentPageChars+1);
-      setScrolledChar((scrolledCharacter) => [...scrolledCharacter, ...moreCharacters]);
-    }
-  };
-  useEffect(() => {
+//     const scrollHeight = e.target.documentElement.scrollHeight;
+//     const currentHeight = Math.ceil(
+//       e.target.documentElement.scrollTop + window.innerHeight
+//     );
+//     if (currentHeight + 1 >= scrollHeight) {
+//       await characters.results === undefined ? console.log("asd") : moreCharacters.push(characters.results);
+//       setCurrentPageChars(currentPageChars+1);
+//       setScrolledChar((scrolledCharacter) => [...scrolledCharacter, ...moreCharacters]);
+//     }
+//   };
+//   useEffect(() => {
    
-      setCurrentPageChars(currentPageChars+1);
-      window.addEventListener("scroll", handleScroll);
-      console.log(scrolledCharacter)
-  }, []);
+//       setCurrentPageChars(currentPageChars+1);
+//       window.addEventListener("scroll", handleScroll);
+//       console.log(scrolledCharacter)
+//   }, []);
 
 
   const CharButtonHandleClick=()=>{
@@ -96,14 +96,25 @@ const HandlePageChangeChars=(page)=>{
       currentPage={currentPageLocs}
       onPageChange={(page)=>{HandlePageChangeLocs(page)}}
       />:""}
-  <div className="cardContainer">
+  <div className="cardContainer" >
     {showCharacters ?
       characters.results === undefined ? console.log("asd") : characters.results.map((user) => <Characters {...user}  key={user.id}/>)
       : ""}
     {showLocations ?
       locations.results === undefined ? console.log("asd") : locations.results.map((user) => <Locations {...user} key={user.id}/>)
       : ""}
+
   </div>
+  {showCharacters? <Pagination
+      totalPages={42}
+      currentPage={currentPageChars}
+      onPageChange={(page)=>{HandlePageChangeChars(page)}}
+      />:""}
+  {showLocations? <Pagination
+      totalPages={7}
+      currentPage={currentPageLocs}
+      onPageChange={(page)=>{HandlePageChangeLocs(page)}}
+      />:""}
   </div>
    <div>
    {showGreetings?

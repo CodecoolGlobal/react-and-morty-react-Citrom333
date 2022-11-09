@@ -23,6 +23,7 @@ function Locations({ id, name, type, dimension, residents, reset }) {
 
         <div onClick={flipImg} className="cards front" key={id}>
             <img
+                id="cardImg"
                 height="300"
                 src={locations}
                 alt={name}
@@ -35,7 +36,7 @@ function Locations({ id, name, type, dimension, residents, reset }) {
         :
         <div onClick={flipImg} className="cards back" key={id}>
             <h2>
-                <span>Name: {name}</span><br />
+            <br/><span>Name: {name}</span><br />
                 <span>Dimension: {dimension}</span><br />
                 <span>Type: {type}</span><br />
                 {/* <span>Residents: {residents}</span><br /> */}

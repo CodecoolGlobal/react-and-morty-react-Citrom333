@@ -23,7 +23,8 @@
     margin-right: auto;
     text-align: center;
     align-items: center;
-    padding-top: 60px
+    padding-top: 60px;
+   
 }
 
 #Logo {
@@ -35,6 +36,7 @@
 }
 
 #greetbox {
+   
     display: flex;
     justify-content: center;
     padding: 40px;
@@ -42,8 +44,12 @@
 
 
 #greetings {
+    background: url("./components/Img/-4-aNWj_J38SstFp3Lvt_mCK-Cn9lQLD-1gm8yfPcs8.png");
+    
+    background-position: center;
+    background-repeat: no-repeat;
     text-align: center;
-
+    width: 60vw;
     background-color: beige;
     border: none;
     color: rgb(0, 0, 0);
@@ -54,6 +60,10 @@
     border-radius: 20px;
     font-size: 40px;
     font-weight: bold;
+    text-shadow: -3px 3px 0 rgb(240, 232, 232),
+    3px 3px 0 rgb(242, 237, 237),
+   3px -3px 0 rgb(238, 223, 223),
+  -3px -3px 0 rgb(241, 225, 225);
 }
 
 #shrink {
@@ -68,21 +78,35 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     padding: 20px;
+    transition: 1s;
+    
+    
 }
 
 .cards {
+    transform:scale(1,1);
+    background: url("./components/Img/portal2.png"); 
+    box-shadow: 10px 10px 50px 50px rgba(23, 2, 72, 0.789) inset;
+    background-size: cover;
     text-align: center;
-    background-color: #ffffff;
+    
     padding: 20px;
-    border: 3px solid rgba(0, 0, 0, 0.8);
+    
     border-radius: 6%;
+    box-shadow: #818a91;
     height: 400px;
-   
   transform-style: preserve-3d;
   transform-origin: center;
   transition: transform 0.5s;
-  
  
+ 
+}
+
+#cardImg {
+    border: 3px solid;
+    border-color: gray;
+    border-radius: 50%;
+    opacity: none;
 }
 
 #charBtn {
@@ -92,11 +116,15 @@
     color: rgb(0, 0, 0);
     padding: 40px 120px;
     text-align: center;
-    text-decoration: none;
     display: inline-block;
     border-radius: 20px;
     font-size: 40px;
     font-weight: bold;
+    text-shadow: -3px 3px 0 rgb(240, 232, 232),
+    3px 3px 0 rgb(242, 237, 237),
+   3px -3px 0 rgb(238, 223, 223),
+  -3px -3px 0 rgb(241, 225, 225);
+    
 }
 
 #locBtn {
@@ -111,16 +139,27 @@
     border-radius: 20px;
     font-size: 40px;
     font-weight: bold;
+    text-shadow: -3px 3px 0 rgb(240, 232, 232),
+    3px 3px 0 rgb(242, 237, 237),
+   3px -3px 0 rgb(238, 223, 223),
+  -3px -3px 0 rgb(241, 225, 225);
 }
 
 
 
 .front {
   backface-visibility: hidden;
+  text-shadow: -2px 2px 0 rgb(240, 232, 232),
+  2px 2px 0 rgb(242, 237, 237),
+ 2px -2px 0 rgb(238, 223, 223),
+-2px -2px 0 rgb(241, 225, 225);
 }
 
+
 .back {
-    transform: rotateY(180deg) scale(-1, 1);;
+    background: url("./components/Img/back.jpg");
+    background-size: cover;
+    transform: rotateY(180deg) scale(-1, 1);; 
    
 }
 
