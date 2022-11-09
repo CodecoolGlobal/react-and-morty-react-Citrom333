@@ -4,7 +4,7 @@ import { useCharacters, useLocations } from "./api/useData";
 import Frontpage from "./components/Frontpage";
 import Characters from "./components/Characters";
 import Locations from "./components/Locations";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Pagination from "./components/Pagination";
 
 
@@ -15,6 +15,29 @@ function App() {
   const [currentPageLocs, setCurrentPageLocs]=useState(1);
   const characters = useCharacters(currentPageChars);
   const locations = useLocations(currentPageLocs);
+const moreCharacters=[];
+const [scrolledCharacter, setScrolledChar]=useState([])
+characters.results === undefined ? console.log("loading") : moreCharacters.push(characters.results);
+  const handleScroll =async (e) => {
+  
+   
+    const scrollHeight = e.target.documentElement.scrollHeight;
+    const currentHeight = Math.ceil(
+      e.target.documentElement.scrollTop + window.innerHeight
+    );
+    if (currentHeight + 1 >= scrollHeight) {
+      await characters.results === undefined ? console.log("asd") : moreCharacters.push(characters.results);
+      setCurrentPageChars(currentPageChars+1);
+      setScrolledChar((scrolledCharacter) => [...scrolledCharacter, ...moreCharacters]);
+    }
+  };
+  useEffect(() => {
+   
+      setCurrentPageChars(currentPageChars+1);
+      window.addEventListener("scroll", handleScroll);
+      console.log(scrolledCharacter)
+  }, []);
+
 
   const CharButtonHandleClick=()=>{
     console.log("click");
@@ -75,10 +98,10 @@ const HandlePageChangeChars=(page)=>{
       />:""}
   <div className="cardContainer">
     {showCharacters ?
-      characters.results === undefined ? console.log("asd") : characters.results.map((user) => <Characters {...user}  reset={reset}/>)
+      characters.results === undefined ? console.log("asd") : characters.results.map((user) => <Characters {...user}  key={user.id}/>)
       : ""}
     {showLocations ?
-      locations.results === undefined ? console.log("asd") : locations.results.map((user) => <Locations {...user} reset={reset}/>)
+      locations.results === undefined ? console.log("asd") : locations.results.map((user) => <Locations {...user} key={user.id}/>)
       : ""}
   </div>
   </div>
