@@ -119,7 +119,7 @@ function App() {
 
   }
   return <div className="fullPage"><div ><Frontpage props={props} />
-    {showCharacters ? <Pagination
+    {/* {showCharacters ? <Pagination
       totalPages={42}
       currentPage={currentPageChars}
       onPageChange={(page) => { HandlePageChangeChars(page) }}
@@ -128,7 +128,7 @@ function App() {
       totalPages={7}
       currentPage={currentPageLocs}
       onPageChange={(page) => { HandlePageChangeLocs(page) }}
-    /> : ""}
+    /> : ""} */}
     <div className="cardContainer" >
       {showCharacters ?
         // characters.results === undefined ? console.log("asd") : characters.results.map((user) => <Characters {...user} key={user.id} />)
@@ -140,7 +140,7 @@ function App() {
         : ""}
 
     </div>
-    {showCharacters ? <Pagination
+    {/* {showCharacters ? <Pagination
       totalPages={42}
       currentPage={currentPageChars}
       onPageChange={(page) => { HandlePageChangeChars(page) }}
@@ -149,7 +149,9 @@ function App() {
       totalPages={7}
       currentPage={currentPageLocs}
       onPageChange={(page) => { HandlePageChangeLocs(page) }}
-    /> : ""}  </div>
+    /> : ""}   */}
+    {showLocations||showCharacters?<button id="returnBtn" onClick={LogoHandleClick}> </button>:""}
+    </div>
     <div>
       {showGreetings ?
         <p id="greetings">On this website, you can get more information about the fantastic multiverse of Rick and Morty</p> : ""}

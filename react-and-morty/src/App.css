@@ -80,7 +80,6 @@
     padding: 20px;
     transition: 1s;
     
-    
 }
 
 .cards {
@@ -125,6 +124,28 @@
    3px -3px 0 rgb(238, 223, 223),
   -3px -3px 0 rgb(241, 225, 225);
     
+}
+#returnBtn {
+    background: url("./components/Img/arrow.png");
+    background-size: 100%;
+    border: none;
+    width: 100px;
+    height: 100px;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    display: inline-block;
+    border-radius: 20px;
+    font-size: 40px;
+    font-weight: bold;
+    text-shadow: -3px 3px 0 rgb(240, 232, 232),
+    3px 3px 0 rgb(242, 237, 237),
+   3px -3px 0 rgb(238, 223, 223),
+  -3px -3px 0 rgb(241, 225, 225);
+    
+    position: fixed;
+    top: 90vh;
+    transform: translate(-50%,-50%);
+    z-index: 10;
 }
 
 #locBtn {
