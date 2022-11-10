@@ -16,14 +16,13 @@ function App() {
   const characters = useCharacters(currentPageChars);
   const locations = useLocations(currentPageLocs);
   const [counterOfBottom, setCounterOfBottom] = useState(1)
-
+// console.log(locations)
   const inTheDeep=()=>{
     if(showCharacters && counterOfBottom<=42){
       setCounterOfBottom(()=>counterOfBottom+1)
       console.log("pageBottom")
       console.log(counterOfBottom)
-     
-    setCurrentPageChars(counterOfBottom)
+     setCurrentPageChars(counterOfBottom)
       }
     else if (showLocations && counterOfBottom <=7) {  
       setCounterOfBottom(()=>counterOfBottom+1)
@@ -53,39 +52,53 @@ function App() {
   const [moreChars, addMoreChars] = useState([])
 
   useEffect(() => {
-    if (characters.results !== undefined) {
-      addMoreChars(current => [...current, ...characters.results])
+    if (characters.results !== undefined) { 
+      if (moreChars.length===0) {
+        addMoreChars(current => [...current, ...characters.results])
+      }
+       else if (moreChars[0].id!==characters.results[0].id) {
+          addMoreChars(current => [...current, ...characters.results])
+        }
       // moreChars.push(...characters.results)
+      else console.log("duplicate")
     }
     // console.log(moreChars)
   }, [characters.results])
 
   const [moreLocs, addMoreLocs] = useState([])
   useEffect(() => {
-    if (locations.results !== undefined) {
-      addMoreLocs(current => [...current, ...locations.results])
-      // moreChars.push(...characters.results)
+    if (locations.results !== undefined) { 
+      if (moreLocs.length===0) {
+        addMoreLocs(current => [...current, ...locations.results])
+      }
+       else if (moreLocs[0].id!==locations.results[0].id) {
+          addMoreLocs(current => [...current, ...locations.results])
+        }
+      // moreLocs.push(...locations.results)
+      else console.log("duplicate")
     }
-    // console.log(moreChars)
   }, [locations.results])
 
   const CharButtonHandleClick = () => {
     console.log("click");
     setShow({ showCharacters: true, showLocations: false, showGreetings: false });
     setShrink(true);
-    
-
+    setCounterOfBottom(1)
   }
-
+  
   const LocButtonHandleClick = () => {
     console.log("click");
     setShow({ showCharacters: false, showLocations: true, showGreetings: false });
     setShrink(true);
+    setCounterOfBottom(1)
+
+    
   }
   const LogoHandleClick = () => {
     console.log("LOGO")
     setShow({ showCharacters: false, showLocations: false, showGreetings: true });
     setShrink(false);
+  
   }
 
   const [shrink, setShrink] = useState(false);
@@ -136,7 +149,7 @@ function App() {
         : ""}
       {showLocations ?
         // locations.results === undefined ? console.log("asd") : locations.results.map((user) => <Locations {...user} key={user.id} />)
-        moreLocs.map((user) => <Locations {...user} key={user.id} />)
+        moreLocs.map((user) => <Locations {...user} key={[user.id,"l"]} />)
         : ""}
 
     </div>
