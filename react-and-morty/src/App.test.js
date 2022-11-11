@@ -1,5 +1,7 @@
 import React from 'react';
-import { render, fireEvent, screen} from '@testing-library/react';
+import { render, waitFor, screen} from '@testing-library/react';
+import userEvent from '@testing-library/user-event'
+
 import App from './App';
 import Characters from "./components/Characters";
 // test('renders learn react link', () => {
@@ -28,14 +30,17 @@ test('renders landing page', () => {
 test('loads cards', async () => {
   const { getByText } = render(<App />);
   // Click button
-  fireEvent.click(screen.getByRole('button', {name: /characters/i}))
+  userEvent.click(screen.getByRole('button', {name: /characters/i}))
   
   // Wait for page to update with query text
-  render(<Characters/>)
-  const items = await screen.findAllByText(/name:/i)
-  // const items = await screen.getByRole(img, {name: /cardImg/i})
+ await waitFor(() => {
+    const items = screen.getAllByText(/name:/i)
+    console.log(items)
+    expect(items).toHaveLength(20)
+
+  }, {timeout: 5000})
   
-  await expect(items).toHaveLength(20)
+  // const items = await screen.getByRole(img, {name: /cardImg/i})
   
 
 })
