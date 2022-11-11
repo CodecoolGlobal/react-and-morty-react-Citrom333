@@ -1,7 +1,12 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, fireEvent, screen} from '@testing-library/react';
 import App from './App';
-
+import Characters from "./components/Characters";
+// test('renders learn react link', () => {
+//   const { getByText } = render(<App />);
+//   const linkElement = getByText(/learn react/i);
+//   expect(linkElement).toBeInTheDocument();
+// });
 test('renders landing page', () => {
   const { getByRole, getByText } = render(<App />);
  
@@ -18,3 +23,20 @@ test('renders landing page', () => {
   expect(greetingElement).toBeInTheDocument();
 
 });
+
+
+test('loads cards', async () => {
+  const { getByText } = render(<App />);
+  // Click button
+  fireEvent.click(screen.getByRole('button', {name: /characters/i}))
+  
+  // Wait for page to update with query text
+  render(<Characters/>)
+  const items = await screen.findAllByText(/name:/i)
+  // const items = await screen.getByRole(img, {name: /cardImg/i})
+  
+  await expect(items).toHaveLength(20)
+  
+
+})
+
